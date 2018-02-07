@@ -1,0 +1,37 @@
+<div class="main-content">
+	<div class="page-banner history-img clearfix">
+		<img src="assets/img/banner_3.png" />
+		<div class="banner-content">
+			<h3>My</h3>
+			<h2>Invoice</h2>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+		</div>
+	</div>
+	<div class="heading-design"><img src="assets/img/logo_p.png" />			
+		<h3><span>My</span>Invoice</h3>
+	</div>		
+</div>
+<div class="inner-page clearfix">
+	<div class="text-div">
+		<div  class="container">			
+			<div id="customers"class="panel-body" ng-if="vm.data.docotorData.length != 0">
+	           		 <ul class="clearfix" id="myUL">
+	                		<li class="col-md-6" ng-repeat="(key,value) in vm.data.docotorData track by $index">
+	                    		<div class="clearfix">
+	                        		<span class="col-md-3 pd0">    
+	                           		 	<img ng-src="assets/img/folder_icon.png">
+	                       			 </span>    
+	                        		<span class="col-md-9 name-title">
+	                            		<a ng-click="vm.patientInvoiceDetails(value)"><h4>Dr.{{value.firstName}} {{value.lastName}}</46></h4></a>
+	                           		 	<!-- <a href="" ng-click="vm.patientdetails(data.id)"><span></span></a> -->
+	                       		 	</span>
+	                  			</div>
+	                		</li>
+	           		</ul>
+	   		</div>
+	   		<div id="customers"class="panel-body" ng-if="vm.data.docotorData.length ==  0">
+	   					<p class="empty-data">No Bills</p> 
+	   		</div>
+		</div>
+	</div>
+</div>

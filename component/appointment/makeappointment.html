@@ -1,0 +1,95 @@
+<!-- make an appointment  -->
+<div  class="heading-design"><img src="assets/img/logo_p.png" />			
+	<h3><span>Make An</span> Appointment</h3>
+</div>
+<form   name="appointment" class="make-form" ng-submit="vm.makeAnAppointment(vm.sendData,vm.sendData.service.mins)" novalidate>
+	<div class="clearfix">
+		<div class="col-md-6">
+			<div class="form-group" ng-hide="vm.data.clinicErrorMsg">
+				<oi-select
+					 oi-options="data.username for data in vm.data.clinicDetails track by data.id"
+					 name="clinic"
+					 ng-model="vm.sendData.clinic" 
+					 oi-select-options="{cleanModel: true }"
+					 placeholder="Select  clinic"
+					ng-change="vm.getSpecailityDetails(vm.sendData.clinic.id)" required></oi-select>
+				<div class="mandatory" ng-show="appointment.clinic.$invalid && (appointment.clinic.$dirty || vm.data.submitted)"><div ng-show="appointment.clinic.$error.required">clinic required</div></div>
+			</div>
+			<div class="form-group mandatory" ng-show="vm.data.clinicErrorMsg">
+				No Clinic Found
+			</div>
+			<div class="form-group" ng-hide="vm.data.doctorErrorMsg">
+				<oi-select
+				    oi-options="data.UserDes for data in vm.data.doctorDetails track by data.id"
+					  name="doctor"
+					  ng-model="vm.sendData.doctor" 
+					  placeholder="Select  Doctor"
+					  oi-select-options="{cleanModel: true }"
+					 ng-change="vm.checkAppointmentDate();vm.getServiceDetails(vm.sendData.clinic.id,vm.sendData.speciality.id,vm.sendData.doctor.id)"
+					  ng-disabled="!vm.sendData.speciality"required></oi-select>
+					 <div class="mandatory" ng-show="appointment.doctor.$invalid && (appointment.doctor.$dirty || vm.data.submitted)"><div ng-show="appointment.doctor.$error.required">doctor required</div></div>   
+			</div>
+			<div class="form-group mandatory" ng-show="vm.data.doctorErrorMsg">
+					No Doctor Found
+			</div>
+			<div class="form-group">
+		<!-- 	<input type="text" class="form-control" placeholder="Date"> -->
+		 		<input id="startDate" class="form-control" type="text" doj="50" autocomplete="off"  name="appointmentStart" ng-model="vm.sendData.appointmentStart"
+								placeholder="Appointment start date" 
+								           ng-click="vm.startDate=true"
+								           is-open="vm.startDate" 
+								           uib-datepicker-popup="{{vm.format}}" 
+								           datepicker-options="vm.dateOptions" 
+								           date-disabled="vm.dateDisabled(date,mode)"
+								           ng-change="vm.getClinicTiming(vm.sendData.appointmentStart)"
+								           max-date="vm.data.previousData"
+								           min-date="vm.data.currentDate"
+								           ng-disabled="!vm.sendData.doctor.id"
+								           close-text="Close"
+								           required>
+				 <div class="mandatory" ng-show="appointment.appointmentStart.$invalid && (appointment.appointmentStart.$dirty || vm.data.submitted)"><div ng-show="appointment.appointmentStart.$error.required">Appointment start required</div></div>		         
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group" ng-hide="vm.data.specialityErrorMsg">
+				<oi-select
+					 oi-options="item.name for item in vm.data.specialityDetails track by item.id"
+					 name="Speciality"
+					 ng-model="vm.sendData.speciality" 
+					 placeholder="Select  Speciality"
+					 oi-select-options="{cleanModel: true }"
+					 ng-change="vm.getDoctorDetails(vm.sendData.speciality,vm.sendData.clinic)" 
+					  ng-disabled="!vm.sendData.clinic" 
+					   required></oi-select>
+				 <div ng-hide="vm.sendData.speciality.mins == 1">{{vm.sendData.speciality.mins}}</div>
+				 <div class="mandatory" ng-show="appointment.Speciality.$invalid && (appointment.Speciality.$dirty || vm.data.submitted)"><div ng-show="appointment.Speciality.$error.required">Speciality required</div></div>	  
+			</div>
+			<div class="form-group mandatory" ng-show="vm.data.specialityErrorMsg">
+					No Speciality Found
+			</div>
+			<div class="form-group" ng-hide="vm.data.serviceErrorMsg">
+				<oi-select
+					 oi-options="data.name for data in vm.data.serviceDetails track by data.id"
+					  name="service"
+					  ng-model="vm.sendData.service" 
+				     oi-select-options="{cleanModel: true }"
+					 placeholder="Select  Service"
+					  ng-disabled="!vm.sendData.doctor"
+					 required></oi-select>
+					<div class="mandatory" ng-show="appointment.service.$invalid && (appointment.service.$dirty || vm.data.submitted)"><div ng-show="appointment.service.$error.required">service required</div></div>
+			</div>
+			<div class="form-group mandatory" ng-show="vm.data.serviceErrorMsg">
+					No Service Found
+			</div>
+			<div ng-hide="!vm.sendData.appointmentStart" class="form-group">
+					  	<div uib-timepicker name="time" ng-model="vm.sendData.appointmentStart" minute-step="vm.sendData.service.mins" data-on-set-time="onTimeSet(newDate, oldDate)" show-meridian="true" class="tp-style" datetimepicker-neutral-timezone  
+					  	ng-change="vm.findAppointment(vm.sendData.appointmentStart)" ng-readonly="!vm.sendData.doctor.id" required></div>
+					  	<div class="mandatory" ng-show="appointment.time.$invalid && (appointment.time.$dirty || vm.data.submitted)"><div ng-show="appointment.time.$error.required">time required</div></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12 clearfix"><textarea class="form-control" rows="5" name="reason" ng-model="vm.sendData.reason" placeholder="Reason" name="reason" required></textarea>		
+				<div class="mandatory" ng-show="appointment.reason.$invalid && (appointment.reason.$dirty || vm.data.submitted)"><div ng-show="appointment.reason.$error.required">reason required</div></div>	
+			<button type="submit" class="btn btn-primary lf-mr">SUBMIT</button>
+		</div>
+</form>

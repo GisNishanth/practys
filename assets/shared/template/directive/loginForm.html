@@ -1,0 +1,18 @@
+
+<div class="ngdialog-message popup-bg col-md-12" ng-class="{popupbg: popup == true}" data-ng-controller="mainController as main">
+	<h3 class="form-title">Login Form</h3>
+		<div class="loginsec2 clearfix">
+		<form name="loginForm" ng-submit="loginFormSubmit(loginDetails)"  novalidate>
+			<div class="form-group userfontawsme">
+				<input ng-model="loginDetails.email" id="userName" class="text_input form-control " maxlength="50"  name="username" placeholder="NRIC Id" type="text" required>
+			</div>
+			<div class="mandatory" ng-show="loginForm.username.$invalid && (loginForm.username.$dirty || loginForm.$submitted)"><div ng-show="loginForm.username.$error.required">NRIC Id Is Required</div></div>
+			<div class="form-group pswdfontawsme ">
+				<input ng-model="loginDetails.password" id="userPassword" class="text_input form-control" name="password" placeholder="Password" type="password" required>
+				<div class="mandatory" ng-show="loginForm.password.$invalid && (loginForm.password.$dirty || loginForm.$submitted)"><div ng-show="loginForm.password.$error.required">Password Is Required</div></div>
+			</div>
+				<input id="login" class="blue-btn btn btn-primary btnfontawsme" value="Login In" type="submit">
+				<a href="#" class="forget-pwd" ng-click="main.forgetPassword()">Lost Your Password</a>
+		</form>	
+	</div>
+</div>

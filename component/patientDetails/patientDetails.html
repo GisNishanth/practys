@@ -1,0 +1,326 @@
+<div class="main-content">
+    <div class="page-banner history-img clearfix">
+        <img src="assets/img/banner_3.png"  />
+        <div class="banner-content">
+            <h3>Billing</h3>
+            <h2></h2>
+            <p>Lorem Ipsum is simply dummy t`t of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+        </div>
+    </div>
+    <div class="heading-design"><img src="assets/img/logo_p.png" />         
+        <h3><span>My</span> Invoice</h3>
+
+    </div>    
+    <!-- <button class="btn btn-primary pull-right" ng-click="createPDF()">PDF</button>   -->
+</div>
+<!--<div class="container">
+<button class="btn btn-primary pull-right" ng-click="createPDF()">PDF</button>
+<div  id="exportable"  style="width:100%;margin:0 auto;">
+	<table  width="100%" cellspacing="2" cellpadding="0">
+	<tr>
+	<td width="60%" valign="top" style="">
+		 <table width="100%"  cellspacing="2" cellpadding="0">
+			<tr>
+				<td width="7%" valign="top"> <h4 style="margin:0;">Bill To :</h4> </td>
+				<td width="35%" valign="top">
+                        <p style="margin:0px;">{{vm.data.PatientDetails.patient.firstName}} {{vm.data.PatientDetails.patient.lastName}}</p>
+						<p style="margin:0px;">{{vm.data.PatientDetails.patient.area}}</p>
+						<p style="margin:0px;">{{vm.data.PatientDetails.patient.address}}</p>
+						<p style="margin:0px;">{{vm.data.PatientDetails.patient.city}}</p>
+						<p style="margin:0px;">{{vm.data.PatientDetails.patient.mobile}}</p>
+				</td>
+			</tr>
+        </table>
+	</td>
+	<td width="40%" valign="top" style="">
+		<table width="100%"  cellspacing="2" cellpadding="0">
+			<tr>
+				<td width="15%" valign="top"> <h4 style="margin:0;">Date :</h4> </td>
+				<td width="35%" valign="top"><p style="margin:0px;">{{vm.data.PatientDetails.invoiceDate}}</p></td>
+			</tr>
+			<tr>
+				<td width="15%" valign="top"> <h4 style="margin:0;">Customer ID :</h4> </td>
+				<td width="35%" valign="top"><p style="margin:0px;">{{vm.data.PatientDetails.patient.id}}</p></td>
+			</tr>
+			<tr>
+				<td width="15%" valign="top"> <h4 style="margin:0;">Receipt No:</h4> </td>
+				<td width="35%" valign="top"><p style="margin:0px;">{{vm.data.PatientDetails.invoiceId}}</p></td>
+			</tr>
+        </table>
+		
+	</td>
+	</tr>
+	<tr>
+	<td width="50%" valign="top" style="">
+		<h4 style="margin:15px 0;text-align:left;font-weight:bold;">Remittance :</h4>
+		<p style="margin:0px;">{{vm.data.PatientDetails.clinic.firstName}} {{vm.data.PatientDetails.clinic.lastName}} </p>
+		<p style="margin:0px;">{{vm.data.PatientDetails.clinic.area}}</p>
+		<p style="margin:0px;">{{vm.data.PatientDetails.clinic.address}}</p>
+		<p style="margin:0px;">{{vm.data.PatientDetails.clinic.city}}</p>
+		<p style="margin:0px;">{{vm.data.PatientDetails.clinic.mobile}}</p>
+		<p style="margin:0px;">{{vm.data.PatientDetails.clinic.email}}</p>
+	</td>
+	
+	<td width="50%" valign="top" style="">
+		<h4 style="margin:15px 0;text-align:left;font-weight:bold;">Doctor Detail :</h4>
+		<p style="margin:0px;">{{vm.data.PatientDetails.doctor.firstName}} {{vm.data.PatientDetails.doctor.lastName}}</p>
+		<p style="margin:0px;">{{vm.data.PatientDetails.doctor.mobile}}</p>
+		<p style="margin:0px;">{{vm.data.PatientDetails.doctor.email}}</p>
+	</td>
+	</tr>
+</table>
+<div id="content" style="width:100%;margin:20px auto 0;display:block;">
+<h3 style="margin:0 0 25px 0;text-align:left;font-weight:bold;font-size:20px;">Account Activity :</h3>
+ <table width="100%" border="1" cellspacing="2" cellpadding="0">
+	<tr>
+		<th width="5%"  valign="top" style="text-align:center;padding:10x 10px;">#</th>
+		<th width="25%" valign="top" style="text-align:center;padding:10px 10px;">Name</th>
+		<th width="25%" valign="top" style="text-align:center;padding:10px 10px;">Unit Cost SGD</th>
+		<th width="25%" valign="top" style="text-align:center;padding:10px 10px;">Quantity</th>
+		<th width="25%" valign="top" style="text-align:center;padding:10px 10px;">Amount</th>
+	</tr>
+	
+	<tr ng-repeat="(key,drugsDetails) in vm.data.PatientDetails.serviceListJson">
+		
+		<td width="5%"  valign="top" style="text-align:center;padding:10x 4px;">{{key + 1}}</td>
+		<td width="25%" valign="top" style="text-align:center;padding:10px 20px;">{{drugsDetails.name}}(Service)</td>
+		<td width="25%" valign="top" style="text-align:center;padding:10px 20px;"></td>
+		<td width="25%" valign="top" style="text-align:center;padding:10px 20px;"></td>
+		<td width="25%" valign="top" style="text-align:center;padding:10px 10px;">{{drugsDetails.cost}}</td>
+	</tr>
+
+	<tr ng-repeat="(key,details) in vm.data.PatientDetails.prescriptions">
+	
+		<td width="5%"  valign="top" style="text-align:center;padding:10x 4px;">{{(vm.data.PatientDetails.serviceListJson.length + 1) + key}}</td>
+		<td width="25%" valign="top" style="text-align:center;padding:10px 20px;"><span ng-if="details.productName.productName">{{details.productName.productName}}({{details.productName.productType}})</span><span ng-if="details.drugName.productName">{{details.drugName.productName}}({{details.drugName.productType}})</span></td>
+		<td  width="25%" valign="top" style="text-align:center;padding:10px 20px;"><span ng-if="details.drugName">{{details.drugName.sellingPrice}}</span><span ng-if="details.productName">{{details.productName.sellingPrice}}</span></td>
+		<td  width="25%" valign="top" style="text-align:center;padding:10px 20px;">{{details.qty}}</td>
+		<td width="25%" valign="top" style="text-align:center;padding:10px 10px;">{{details.amount}}</td>
+	</tr>
+	
+</table>
+
+<h4 style="margin:25px 0;text-align:right;font-weight:bold;" ng-if="vm.data.PatientDetails.tax && vm.data.PatientDetails.tax != 0">Tax : {{vm.data.PatientDetails.tax}} %</h4>
+<h4 style="margin:25px 0;text-align:right;font-weight:bold;" ng-if="!vm.data.PatientDetails.tax && vm.data.PatientDetails.tax == 0">Tax : 0 % </h4>
+<h4 style="margin:25px 0;text-align:right;font-weight:bold;" ng-if="vm.data.PatientDetails.discount && vm.data.PatientDetails.discount != 0">Discount : {{vm.data.PatientDetails.discount}} %</h4>
+<h4 style="margin:25px 0;text-align:right;font-weight:bold;" ng-if="!vm.data.PatientDetails.discount && vm.data.PatientDetails.discount == 0">Discount : 0 %</h4>
+<h4 style="margin:25px 0;text-align:right;font-weight:bold;color:#a94442">Amount : {{vm.taxCalculation(vm.data.PatientDetails)}} <span style="color:#a94442"> SGD </span></h4>
+<h4 style="margin:25px 0;text-align:right;font-weight:bold;color:#a94442" >Balance Amount: {{vm.balanceCalculation(vm.data.PatientDetails)}} <span> SGD </span></h4>
+<h4 style="margin:25px 0;text-align:right;font-weight:bold;">Payment Status :{{vm.data.PatientDetails.paymentStatus}}</h4>
+
+<center>
+<p style="margin:0px;">If you have any questions about this invoice</p>
+<p style="margin:0px;">{{vm.data.PatientDetails.clinic.firstName}},{{vm.data.PatientDetails.clinic.address}},{{vm.data.PatientDetails.clinic.city}}</p>
+<p style="margin:0px;">phone:{{vm.data.PatientDetails.clinic.mobile}},Email:{{vm.data.PatientDetails.clinic.email}}</p>
+<h4 style="margin:10px 0 30px 0;font-weight:bold;">Thank You For Your Business!</h4>
+</center>
+
+
+</div>
+
+
+</div>
+</div>-->
+
+
+   <form name="invoiceForm" >
+		
+		
+	<!-- 	{{obj}} -->
+
+<div class="container" id="exportable">
+	<div class="pull-right mrt-15">
+		<button id="printbill" onclick="window.print();" class="btn btn-primary">Print</button>
+	</div>
+    <div class="row">
+        <div class="well" style="padding: 30px 50px;background: #fff;">
+            <div class="row">
+
+
+                 <div style="border-bottom: 2px solid #000;padding: 0px 0px 10px 0px;margin-bottom: 20px;width: 100%;clear: both;display: block;float: left;">
+                    <address>
+                   <div style="float: left;width: 11%;margin-right: 20px;">
+                   	<img src="{{vm.data.PatientDetails.clinic.thumbimage}}{{vm.data.PatientDetails.clinic.image}}">
+                   </div>
+                   <div style="float: left;width: 70%;">
+                   	<div class="clearfix">
+                   		<strong>{{vm.data.PatientDetails.clinic.username}}</strong>
+                   	</div>
+                   	<div style="float: left;width: 50%;">
+                   		<p>{{vm.data.PatientDetails.clinic.area}}</p>
+
+                        <p>{{vm.data.PatientDetails.clinic.address}}</p>
+
+                        <p>{{vm.data.PatientDetails.clinic.city}}</p>
+
+                        <p>Phone : {{vm.data.PatientDetails.clinic.mobile}}</p>
+                   	</div>
+
+                      <!--  <div style="float: right;width: 50%;">
+                       	<span title="Phone">Phone :</span> {{obj.clinic.mobile}}
+                       </div> -->
+
+                   </div>
+
+
+
+                    </address>
+                </div>
+                <br>
+                 <div style="width: 100%;display: block;border-bottom: 1px solid #000;float: left;margin-bottom: 20px;">
+                      <p> {{vm.data.PatientDetails.patient.firstName+ ' ' +vm.data.PatientDetails.patient.lastName}}</p>
+                        <p><strong>NRIC:</strong>  {{vm.data.PatientDetails.patient.nric}}</p>
+                </div>
+                <div style="width: 100%;display: block;float: left;">
+                 <div style="float: left;width: 70%;">
+                    <address>
+                        <strong>By:</strong>{{vm.data.PatientDetails.doctor.firstName + ' ' +vm.data.PatientDetails.doctor.lastName}}
+
+                    </address>
+                </div>
+
+                <div style="float: right;width: 30%;">
+                    <p>
+                        <em>Date: {{vm.data.PatientDetails.invoiceDate}}</em>
+                    </p>
+                    <p>
+                        <em>Receipt #: {{vm.data.PatientDetails.invoiceId}}</em>
+                    </p>
+                </div>
+                </div>
+          <!--       <h4 style="margin:15px 0;text-align:left;font-weight:600;font-size: 16px; ">RECEIPT:</h4>
+			<p style="margin:25px 0;text-align:left" >Recieved with thanks, amount of {{obj.payment}}&nbsp;SGD towards the following:</p> -->
+            </div>
+            <div class="row">
+                 <table class="table table-hover" style="border: 1px solid #ccc;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 20px 10px;">#</th>
+                            <th style="padding: 20px 10px;">Treatments & Products</th>
+                            <th style="padding: 20px 10px;">Unit Cost SGD</th>
+                            <th style="padding: 20px 10px;">Qty</th>
+                            <th style="padding: 20px 10px;" class="text-right">Total Cost SGD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <tr ng-repeat="(key,drugsDetails) in vm.data.PatientDetails.serviceListJson">
+									<td>{{key + 1}}</td>
+									<td >{{drugsDetails.name}}<b>(Service)</b></td>
+									<td ></td>
+									<td ></td>
+									<td class="text-right" style="text-align: right;">{{drugsDetails.cost}}</td>
+
+								</tr>
+								<tr ng-repeat="(key,details) in vm.data.PatientDetails.prescriptions">
+									<td >{{(vm.data.PatientDetails.serviceListJson.length + 1) + key}}</td>
+									<td ng-if="details.drugName" >{{details.drugName.productName}} <b>(Drug)</b></td>
+									<td ng-if="details.drugName" >{{details.drugName.sellingPrice}}</td>
+									<td ng-if="details.drugName" >{{details.qty}}</td>
+									<td ng-if="details.drugName" style="text-align: right;" >{{details.drugName.sellingPrice * details.qty}}</td>
+
+									<td ng-if="details.productName" >{{details.productName.productName}} <b>(Others)</b></td>
+									<td ng-if="details.productName" >{{details.productName.sellingPrice}}</td>
+									<td ng-if="details.productName" >{{details.qty}}</td>
+									<td ng-if="details.productName" style="text-align: right;">{{details.productName.sellingPrice * details.qty}}</td>
+
+									<td ng-if="details.billingItem" >{{details.billingItem}} </td>
+									<td ng-if="details.billingItem" ></td>
+									<td ng-if="details.billingItem" ></td>
+									<td ng-if="details.billingItem" style="text-align: right;">{{details.amount}}</td>
+
+								</tr>
+								<tr  ng-repeat="x in vm.data.PatientDetails.additionalItemJson track by $index">
+								<td >{{vm.data.PatientDetails.serviceListJson.length +vm.data.PatientDetails.prescriptions.length + ($index + 1)}}</td>
+									<td  >{{x.name}} <b>(Additional)</b></td>
+									<td ></td>
+									<td ></td>
+									<td  class="text-right" style="text-align: right;">{{x.amount}}</td>
+
+								</tr>
+                        <tr>
+
+                            <td colspan="4" class="text-right" style="text-align: right;">
+                            <p>
+                                <strong>SubTotal: </strong>
+                            </p>
+                            <p ng-if="vm.data.PatientDetails.tax != null && vm.data.PatientDetails.tax != ''">
+                                <strong>Tax: </strong>
+                            </p>
+                            <p ng-if="vm.data.PatientDetails.discount != null && vm.data.PatientDetails.discount != ''">
+                                <strong>Discount: </strong>
+                            </p></td>
+                            <td class="text-right" colspan="1" style="text-align: right;">
+                            <p>
+                                <strong>{{vm.data.PatientDetails.amount}}&nbsp;SGD</strong>
+                            </p>
+                            <p ng-if="vm.data.PatientDetails.tax != null && vm.data.PatientDetails.tax != ''">
+                                <strong>{{vm.data.PatientDetails.tax}} %</strong>
+                            </p>
+                            <p ng-if="vm.data.PatientDetails.discount != null && vm.data.PatientDetails.discount != ''">
+                                <strong>{{vm.data.PatientDetails.discount}} %</strong>
+                            </p></td>
+                        </tr>
+                        <tr>
+
+                            <td class="text-right" colspan="4" style="text-align: right;" ><strong>Total: </strong></td>
+                            <td class="text-right text-danger" style="text-align: right;" colspan="1"><h4><strong>{{vm.taxCal(vm.data.PatientDetails)}}&nbsp;SGD</strong></h4></td>
+                            <!-- <td class="text-right" style="text-align: right;" colspan="3" ng-if="!obj.appointmentBalanceAmount"><h4><strong>Total: </strong></td>
+                            <td class="text-right text-danger" colspan="2" style="text-align: right;" ng-if="!obj.appointmentBalanceAmount"><strong>{{obj.amount}}&nbsp;SGD</strong></td> -->
+                            </tr>
+                            <tr>
+                            <td class="text-right"  colspan="4" style="text-align: right;" ng-if="vm.data.PatientDetails.appointmentBalanceAmount"><strong>Balance Amount: </strong></td>
+                            <td class="text-right text-danger" colspan="1" style="text-align: right;" ng-if="vm.data.PatientDetails.appointmentBalanceAmount"><strong>{{vm.addAmounts(vm.data.PatientDetails.pendingAmount , vm.data.PatientDetails.appointmentBalanceAmount)}}&nbsp;SGD</strong></td>
+                            </tr>
+                             <tr>
+                             	<td colspan="4" class="text-right" style="text-align: right;" ng-if="!vm.data.PatientDetails.appointmentBalanceAmount"><strong>Balance Amount: </strong></td>
+                            	<td colspan="1" class="text-right text-danger" ng-if="!vm.data.PatientDetails.appointmentBalanceAmount" style="text-align: right;"><strong>{{vm.data.PatientDetails.pendingAmount}}&nbsp;SGD</strong></td>
+                             </tr>
+                            <tr>
+                            	 <td class="text-right" colspan="4" style="text-align: right;" ><strong>Amount recieved on {{vm.dateFormat(vm.data.PatientDetails.modified)}}:</strong>
+                            	 </td>
+                            	 <td colspan="1" class="text-right text-danger" style="text-align: right;"><strong>{{vm.data.PatientDetails.payment}}&nbsp;SGD</strong></td>
+                            	 &nbsp;
+                            </tr>
+
+                             <tr>
+                             	 <td class="text-right" colspan="5" style="text-align: left;"><strong>Mode of Payment :&nbsp; {{vm.data.PatientDetails.paymentType}}</strong></td>
+
+
+
+                        <!-- <tr>
+                        	 <td class="text-right" colspan="5" style="text-align: left;"><strong>Amount Due as of {{date | date:'MMM d, y'}} is &nbsp;{{obj.pendingAmount}}&nbsp;SGD</strong></td>
+                        </tr> -->
+                        <tr>
+                        <td style="text-align: center;" colspan="5">
+								<p style="margin:0px;">If you have any questions about this invoice</p>
+								<p style="margin:0px;">{{vm.data.PatientDetails.clinic.firstName}},{{vm.data.PatientDetails.clinic.address}},{{vm.data.PatientDetails.clinic.city}}</p>
+								<p style="margin:0px;">phone:{{vm.data.PatientDetails.clinic.mobile}},Email:{{vm.data.PatientDetails.clinic.email}}</p>
+								<h4 style="margin:10px 0 30px 0;font-weight:bold;">Thank You For Your Business!</h4>
+								</td>
+						</tr>
+                    </tbody>
+                </table>
+
+              <!-- </td> -->
+            </div>
+        </div>
+    </div>
+	
+</form>
+
+<style type="text/css">
+	@media print {
+		@page { margin: 0; }
+		#printbill, #back-print, #sidebar-wrapper, .main-head, #toast-container, .panel-heading , .main-content, .main-header, .footer-section{
+			display: none;
+		}
+		#wrapper{
+			padding: 0;
+		}
+
+	}
+</style>
+
+
+
+

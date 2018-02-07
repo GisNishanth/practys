@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html ng-app="practysApp">
+<head>
+	<meta charset="utf-8">
+	<title>PractysApp</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png"/>
+
+	<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="assets/bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="assets/js/angular-resource.min.js"></script>
+	<script type="text/javascript" src="assets/js/ngDialog.min.js"></script>
+	<script type="text/javascript" src="assets/js/angular-toastr.tpls.js"></script>
+	<script type="text/javascript" src="assets/js/underscore-min.js"></script>
+	<script type="text/javascript" src="assets/js/moment.min.js"></script>
+	<script type="text/javascript" src="assets/js/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="assets/js/simpleSlider.js"></script>
+	<script type="text/javascript" src="assets/js/dropdown_select.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="assets/js/angular-datatables.min.js"></script>
+	<script type="text/javascript" src="assets/js/ng-map.min.js"></script>
+	<script type="text/javascript" src="assets/bower_components/angular-cookies/angular-cookies.min.js"></script>
+	<script type="text/javascript" src="assets/js/loading-bar.js"></script>
+	<script type="text/javascript" src="assets/js/jspdf.min.js"></script>
+	<script type="text/javascript" src="assets/js/angular-slick.js"></script>
+	<script type="text/javascript" src="assets/js/slick.min.js"></script>
+	<script type="text/javascript" src="assets/js/ng-file-upload.min.js"></script>
+	<script type="text/javascript" src="assets/js/scrollglue.min.js"></script>
+	
+<!-- 	<script type="text/javascript" src="assets/js/jspdf.plugin.autotable.js"></script> -->
+
+	<!--Routing File -->
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="approutes.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="config/env.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="assets/bower_components/uib-dateandtimerpicker/css/datetimepicker.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">		
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="assets/css/mystyle.css"/>
+	<link rel="stylesheet" type="text/css" href="assets/css/ngDialog.css"  />
+    <link rel="stylesheet" type="text/css" href="assets/css/ngDialog-theme-default.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/oi-select.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/angular-toastr.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/angular-datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/loading-bar.css">
+
+  
+	
+	<!-- <script type="text/javascript" src="assets/js/ui-bootstrap-tpls-0.12.0.js"></script> -->
+	<script type="text/javascript" src="assets/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+	<script type="text/javascript" src="assets/bower_components/uib-dateandtimerpicker/js/datetimepicker.js"></script>
+	<script type="text/javascript" src="assets/bower_components/uib-dateandtimerpicker/js/datetimepicker.templates.js"></script>  
+	
+	<!--Directive -->
+	<script type="text/javascript" src="libs/directive/roundProgress.js"></script>
+	<script type="text/javascript" src="libs/directive/fixedheader.js"></script>
+	<script type="text/javascript" src="libs/directive/ScrollGlue.js"></script>
+	<script type="text/javascript" src="libs/directive/fileupload.js"></script>
+	<script type="text/javascript" src="libs/directive/defaultimage.js"></script>
+	<script type="text/javascript" src="libs/directive/clickOutside.js"></script>
+
+	<!--common service -->
+	<script type="text/javascript" src="libs/services/commonService.js"></script>
+	<script type="text/javascript" src="libs/services/utilService.js"></script>
+	<script type="text/javascript" src="libs/services/authenticationService.js"></script>	
+
+	<!--Dashboard controller and service-->
+	<script type="text/javascript" src="component/dashboard/dashboard.js"></script>
+	<script type="text/javascript" src="component/dashboard/dashboardServices.js"></script>
+	<script type="text/javascript" src="component/dashboard/authInterceptor.js"></script>
+
+	<!--records controller and service-->
+	<script type="text/javascript" src="component/records/records.js"></script>
+	<script type="text/javascript" src="component/records/recordsServices.js"></script>
+
+	<!--Appointment controller and service-->
+	<script type="text/javascript" src="component/appointment/appointment.js"></script>
+	<script type="text/javascript" src="component/appointment/appointmentServices.js"></script>
+	<script type="text/javascript" src="component/appointment/appointmentFilter.js"></script>
+	
+	<!--Billling History controller and service -->
+	<script type="text/javascript" src="component/billingHistory/billingHistory.js"></script>
+	<script type="text/javascript" src="component/billingHistory/billingHistoryServices.js"></script>
+
+	<script type="text/javascript" src="component/patientDetails/patientDetails.js"></script>
+	<script type="text/javascript" src="component/billingHistory/billingHistoryDirective.js"></script>
+
+	<!--message controller and service-->
+	<script type="text/javascript" src="component/message/messageController.js"></script>
+	<script type="text/javascript" src="component/message/messageservice.js"></script>
+
+	<!--userprofile controller and service -->
+	<script type="text/javascript" src="component/userProfile/userprofile.js"></script>
+	<script type="text/javascript" src="component/userProfile/userprofileservice.js"></script>
+
+	<script type="text/javascript" src="assets/js/authInterceptor.js"></script>
+	<base href="/practys_website/" />
+</head>
+<body ng-controller="mainController as main" ng-class="{'popupbg': popup != true}">
+	<header>
+		<div class="head_top">
+		<div class="main-header"  >
+			<div class="container">
+				<div class="col-md-6"><a href="tel:(00)-123-456-789" class="pull-left">Call us:(00)-123-456-789</a></div>
+				
+			<div class="col-md-6">	
+			<div class="right-menu pull-right">
+			<a ng-hide="hideValue" ng-click="main.openDefault()">Login</a>
+			<div class="dropdown" ng-show="hideValue" ng-if="notificationDetails.length != 0">
+			  <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" ng-click="main.updateNotification();notificationLength = 0" >
+				<i class="glyphicon glyphicon-bell"></i><span  ng-if="notificationLength != 0" class="label label-warning">{{notificationLength}}</span>
+			  </a>
+			  
+			  <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+				<span class="arrow-i">
+					<i class="fa fa-caret-up" aria-hidden="true"></i>
+				</span>
+				<div class="notification-heading"><h4 class="menu-title">Notifications</h4>
+				</div>
+			   <div class="notifications-wrapper" click-out>
+				 <a class="content" href="">
+				   <div class="notification-item"  ng-repeat="data in notificationDetails | orderBy : '-created'" ng-init="checkRead = main.getUpdateDetails(data)" ng-class="checkRead == false ? 'read-n': 'unread-n'">
+					<h4 class="item-title" ng-click="checkRead = false">{{data.messageText}}</h4>
+					<p class="item-info">{{main.dateFormat(data.created)}}</p>
+				  </div>
+				  <!--  <div class="notification-item">
+					<h4 class="item-title">Evaluation Deadline 1 · day ago</h4>
+					<p class="item-info">Marketing 101, Video Assignment</p>
+				  </div>
+				   <div class="notification-item">
+					<h4 class="item-title">Evaluation Deadline 1 · day ago</h4>
+					<p class="item-info">Marketing 101, Video Assignment</p>
+				  </div> -->
+				   
+				</a>
+			   </div>
+			  </ul>
+			</div>
+			<div class="dropdown user user-menu" ng-show="hideValue">
+				<a class="dropdown-toggle" href="" data-toggle="dropdown" aria-expanded="false">
+					<img class="user-image" ng-src="{{main.makeUrl(userName.origImage,userName.image)}}" on-error-src="assets/img/profile-img.png" alt="User Image">
+					<span class="hidden-xs">{{userName.username}}</span>
+				</a>
+				<ul class="user-block dropdown-menu">
+				<span class="arrow-i"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
+				<li class="user-header">
+					<img class="" ng-src="{{main.makeUrl(userName.origImage,userName.image)}}" on-error-src="assets/img/profile-img.png" alt="User Image">
+					<span class="dp-name">{{userName.username}}</span>
+				</li>
+				<li class="user-footer clearfix">
+				<div class="pull-left"><a ng-show="hideValue" class="btn btn-default" ui-sref="userprofile" >Setting</a></div>
+					<div class="pull-right"><a ng-hide="hideValue" class="btn btn-default" ng-click="main.openDefault()" >Login</a>
+					<a ng-show="hideValue" class="btn btn-default" ng-click="logoutUserDetails()" >Logout</a></div>
+				</li>
+				</ul>			
+			</div>
+			
+			</div>
+			</div>
+			</div>
+		</div>
+		<div class="menu-header" scroll id="page">
+			<div class="container">
+				<!-- Static navbar -->
+				<nav class="navbar navbar-default">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#"><img src="assets/img/logo_header.png" title="logo" /></a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">       
+						<ul class="nav navbar-nav navbar-right top-menu">
+							<li><a href="#" ui-sref="dashboard" ui-sref-active="active" class="hvr-underline-from-left">Home</a></li>
+							<li><a href="#" ui-sref="appointment" ui-sref-active="active"  class="hvr-underline-from-left">Appointment</a></li>
+							<li><a href="#" ui-sref="myrecord" ui-sref-active="active" class="hvr-underline-from-left">My Records</a></li>
+							<li><a href="#" ui-sref="billingHistory" ui-sref-active="active"  class="hvr-underline-from-left">Billing History</a></li>
+							<li><a href="#" ui-sref="message" ui-sref-active="active"  class="hvr-underline-from-left">Message</a></li>
+							<li class="book-app"><a ng-click="main.bookAnAppointment()">Book an Appointment</a></li>
+						<!-- 	 href="#/appointment?scrollTo='appointment'" -->
+						<!-- ng-click="main.bookAnAppointment()" -->
+						</ul>
+					</div><!--/.nav-collapse -->
+				</nav>
+			</div> <!-- /container -->
+			
+		</div>
+		</div>
+	</header>
+	
+	<div ui-view="" class="pract_box"></div>
+	<footer class="footer-section clearfix">
+		<div class="container">
+			<div class="col-md-4 footer-desc">
+				<div class="foot-tit"><img src="assets/img/practys_logo_ft.png"></div>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+			</div>
+			<div class="col-md-8 ft-main footer-menu">
+				<h4 class="foot-tit">MENU</h4>
+				<div class="pdl0 col-md-3">
+					<ul>
+						<li ui-sref="dashboard"><a href="#">Home</a></li>
+						<li ui-sref="myrecord"><a href="#">Medical Records</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul>
+						<li ui-sref="appointment"><a href="#">Appointment</a></li>
+						<li ui-sref="billingHistory"><a href="#">Billing History</a></li>
+					</ul>
+				</div>
+				<!-- <div class="last-ft col-md-3">
+					<ul>
+						<li></li>
+						<li>Contact us</li>
+					</ul>
+				</div> -->
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
+<!-- <script type="text/ng-template">
+        
+        
+    </script> -->

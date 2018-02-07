@@ -1,0 +1,11 @@
+<div class="ngdialog-message popup-bg col-md-12">
+	<h3 class="form-title">Cancel Appoinment</h3>
+		<div class="loginsec2 clearfix">
+		<form name="appointment" ng-submit="appoinmentCancel(reason,appointmentCancelData)" novalidate> 
+			<div class="form-group">
+				<textarea class="form-control" rows="2" placeholder="Reason" name="reason" ng-model="reason" required></textarea>
+				<div class="mandatory" ng-show="(!appointment.reason.$valid && appointment.reason.$dirty) && appointment.$submitted">Required</div>
+			</div>
+				<input id="login" ng-disabled="!appointment.reason.$valid" name="cancel" class="blue-btn btn btn-primary btnfontawsme" value="Cancel Appoinment" type="submit">
+		</form>	
+</div>

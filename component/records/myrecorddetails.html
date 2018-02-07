@@ -1,0 +1,110 @@
+<div class="main-content">
+	<div class="page-banner history-img clearfix">
+		<img src="assets/img/banner_3.png" title="banner" />
+		<div class="banner-content">
+			<h3>My</h3>
+			<h2>Records</h2>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+		</div>
+	</div>
+	<div class="heading-design"><img src="assets/img/logo_p.png" />			
+		<h3><span>My</span> Records</h3>
+	</div>	
+    <div class="container">
+		<div class="common-wdth">
+			<div class="main-panel clearfix">
+				<div class="col-sm-7 pdl">
+					<div class="panel panel-default">
+						<div class="panel-heading">DOCTOR DETAILS</div>
+						<div class="panel-body">
+						<div class="col-sm-4 pd0">
+						<img ng-src="{{vm.makeUrl(vm.data.patientRecordsDetails.Doctor.origimage,vm.data.patientRecordsDetails.Doctor.image)}}" />
+						</div>
+						<div class="col-sm-8 det_disply">
+						<div class="clearfix"><label class="col-sm-5">Name:</label><span class="col-sm-7">Dr.{{vm.data.patientRecordsDetails.Doctor.firstName}} {{vm.data.patientRecordsDetails.Doctor.lastName}} </span></div>
+						<div class="clearfix"><label class="col-sm-5">Speciality:</label><span class="col-sm-7">{{vm.data.patientRecordsDetails.Speciality.name}}</span></div>
+						<div class="clearfix"><label class="col-sm-5">Phone No:</label><span class="col-sm-7">{{vm.data.patientRecordsDetails.Doctor.mobile}}</span></div>
+						<div class="clearfix"><label class="col-sm-5">Email Id:</label><span class="col-sm-7">{{vm.data.patientRecordsDetails.Doctor.email}}</span></div>
+						</div>
+					  </div>
+					</div>
+				</div>
+				<div class="col-sm-5 pdr det_disply">
+					<div class="panel panel-default">
+						<div class="panel-heading">CLINIC DETAILS</div>
+						 <div class="panel-body">
+						<div class="col-sm-12 det_disply">
+						<div class="clearfix"><label class="col-sm-5">Name:</label><span class="col-sm-7">{{vm.data.patientRecordsDetails.Clinic.firstName}} {{vm.data.patientRecordsDetails.Clinic.lastName}}</span></div>
+						<div class="clearfix"><label class="col-sm-5">Address:</label><span class="col-sm-7"><p>{{vm.data.patientRecordsDetails.Clinic.address}}</p></span></div>
+						<div class="clearfix"><label class="col-sm-5">Email Id:</label><span class="col-sm-7"><p>{{vm.data.patientRecordsDetails.Clinic.email}}</p></span></div>
+						<div class="clearfix"><label class="col-sm-5">Phone No:</label><span class="col-sm-7"><p>{{vm.data.patientRecordsDetails.Clinic.mobile}}</p></span></div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main-panel clearfix">
+				<div class="panel panel-default">
+					<div class="panel-heading">TREATMENT LIST</div>
+					 <div class="panel-body">
+						<div class="col-sm-12">
+							<div class="clearfix"><label class="col-sm-5">Notes:</label><span class="col-sm-7">{{vm.data.patientRecordsDetails.Appointment.notes}}</span></div>
+							<div class="clearfix"><label class="col-sm-10">Drugs and Product Details :</label>
+									 <table class="table table-bordered in-list-tab table-striped">
+									 	<thead>
+									 		<td>Product Name</td>
+									 		<td>Usage</td>
+									 		<td>Quantity</td>
+									 		<td>Cost</td>
+									 	</thead>
+									 	<tbody>
+									 		<tr ng-repeat="details in  vm.data.patientRecordsDetails.prescriptions">
+									 			<td><span ng-if="details.productName.productName">{{details.productName.productName}}({{details.productName.productType}})</span><span ng-if="details.drugName.productName">{{details.drugName.productName}}({{details.drugName.productType}})</span></td>
+									 			<td><span ng-if="details.usage">{{details.usage}}</span><span ng-if="details.note">{{details.note}}</span></td>
+									 			<td>{{details.qty}}</td>
+									 			<td>{{details.amount}}</td>
+									 		</tr>
+									 	</tbody>
+									 </table>	
+							</div>
+							<div class="clearfix"><label class="col-sm-10">Invoice:</label>
+									 <table class="table table-bordered in-list-tab table-striped">
+									 	<thead>
+									 		<td>Service Name</td>
+									 		<td>Slug</td>
+									 		<td>Cost</td>
+									 	</thead>
+									 	<tbody>
+									 		<tr ng-repeat="details in  vm.data.patientRecordsDetails.servicesList">
+									 			<td>{{details.name}}</td>
+									 			<td>{{details.slug}}</td>
+									 			<td>{{details.cost}}</td>
+									 		</tr>
+									 	</tbody>
+									 </table>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="recd_blk">
+				<h3>Records</h3>
+				 <slick class="slider" settings="slickConfig3" ng-if="slickConfig3Loaded" >
+                	<div ng-repeat="details in vm.data.patientRecordsDetails.Reports">
+                    	<img ng-src="{{vm.makeUrl(vm.data.patientRecordsDetails.ReportPath.thumbImage,details.image)}}" ng-click="vm.openDialogBox(vm.data.patientRecordsDetails.ReportPath.thumbImage,details.image)"/>
+                	</div>
+            </slick>
+			</div>
+		</div>
+    </div>	
+</div>
+<script type="text/ng-template" id="firstDialogId">
+<div class=" photo-send">
+<h3 id="ngdialog1-aria-labelledby" class="pp-tit" tabindex="-1" style="outline: 0px none;">Image Preview</h3>
+<div class="inner-popup">
+        <img ng-src="{{vm.makeUrl(imageUrl,imageData)}}" class="msg-img">
+		</div>
+		</div>
+    </script>
+
+

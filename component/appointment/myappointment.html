@@ -1,0 +1,76 @@
+<!--  my appointment  -->
+<div>
+	<ul class="nav nav-pills">
+		<li ng-class="{active:vm.isSet(3)}"><a href ng-click="vm.setTab(3)">Upcoming Appointment</a></li>
+		<li ng-class="{active:vm.isSet(1)}"><a href ng-click="vm.setTab(1)">Current Appointment</a></li>
+		<li ng-class="{active:vm.isSet(2)}"><a href ng-click="vm.setTab(2)">Previous Appointment</a></li>
+	</ul>
+	<div ng-show="vm.isSet(1)">
+		<div ng-if="vm.data.currentAppointment.length > 0">
+			<div class="col-md-12 c-app">
+				<div class="col-md-3 app-div">
+					<h3>your Appointment Date</h3>
+					<p class="yr">{{vm.data.currentAppointmentDate}} {{vm.data.currentAppointmentTime}}</p>
+				</div>
+				<div class="col-md-3 app-div">
+					<h3>Doctor Name</h3>
+					<p class="time-bk">Dr.{{vm.data.currentAppointment[0].doctor.username}}</p>
+				</div>
+				<div class="col-md-3 pt-hd app-div">
+					<h3>Patients ahead of you</h3>
+					<p class="pt-ct">{{vm.data.patientAhead}}</p>
+				</div>
+				<div class="col-md-3 app-div">
+					<h3>Clinic Name</h3>
+					<p class="time-bk">{{vm.data.currentAppointment[0].clinic.username}}</p>
+				</div>
+				<!-- <div class="col-md-3 app-div">
+					<h3>Clinic Name</h3>
+					<p class="time-bk">{{vm.data.currentAppointment[0].doctor.username}}</p>
+				</div> -->
+		 	</div>
+		 	<button class="btn btn-primary" ng-click="vm.cancelAppoinment(vm.data.currentAppointment[0])">Appointment Cancel</button>
+		</div>
+		<div ng-if="vm.data.currentAppointment.length == 0">
+			<p class="empty-data">No Current Appointment </p>
+		</div>
+	</div>
+	<div ng-show="vm.isSet(2)">
+		<div ng-if="vm.data.previousAppointment.length > 0" ng-init="vm.data.currentPage = 0">
+			<div class="col-md-12 pre-style">
+					<div class="col-md-6 app-div" ng-repeat="data in vm.data.previousAppointment | startFrom:vm.data.currentPage*vm.data.pageSize | limitTo:vm.data.pageSize ">
+						<div class="pre_app clearfix">
+							<div class="col-md-4 dr-img" ><img ng-if="data.doctor.doctorImage != null" ng-src="http://demo.greatinnovus.com/practysServerApp/{{data.doctor.doctorImage}}" title="doctor" /> <img ng-if="data.doctor.doctorImage == null"src="assets/img/doctor_1.png"/></div>
+							<div class="col-md-4 dr-img"></div>
+							<div class="col-md-8 dr-det"><h3><a ng-click="vm.getPatientReports(data)">Dr.{{data.doctor.username}}</a></h3><p class="">Orthotic Fitting</p>
+							<p>Date:{{data.startDate}}</p><p>Time:{{data.startTime}}</p></div>
+						</div>
+					</div>
+			</div>
+			<button class="btn btn-primary" ng-disabled="vm.data.currentPage == 0" ng-click="vm.data.currentPage = vm.data.currentPage -1">Previous</button>
+			<button class="btn btn-primary" ng-disabled="(vm.data.currentPage+1) >= (vm.data.previousAppointment.length/vm.data.pageSize)" ng-click="vm.data.currentPage = vm.data.currentPage+1">Next</button>
+		</div>
+		<div ng-if="vm.data.previousAppointment.length == 0">
+				<p class="empty-data">No Previous Appointment</p>
+		</div>
+	</div>
+	<div ng-show="vm.isSet(3)">
+		<div ng-if="vm.data.currentAppointment.length  > 1" ng-init="vm.data.currentPage = 0">
+			<div class="col-md-12 pre-style">
+					<div class="col-md-6 app-div" ng-repeat="data in vm.data.currentAppointment | startFrom:vm.data.currentPage*vm.data.pageSize | limitTo:vm.data.pageSize " ng-if="$index > 0">
+						<div class="pre_app clearfix">
+							<div class="col-md-4 dr-img" ><img ng-if="data.doctor.doctorImage != null" ng-src="http://demo.greatinnovus.com/practysServerApp/{{data.doctor.doctorImage}}" title="doctor" /> <img ng-if="data.doctor.doctorImage == null"src="assets/img/doctor_1.png"/></div>
+							<div class="col-md-4 dr-img"></div>
+							<div class="col-md-8 dr-det"><h3>Dr.{{data.doctor.username}}</h3><p class="">Orthotic Fitting</p>
+							<p>Date:{{data.startDate}}</p><p>Time:{{data.startTime}}</p><p><a class="glyphicon glyphicon-remove" ng-click="vm.cancelAppoinment(data)">Appointment Cancel</a></p></div>
+						</div>
+					</div>
+			</div>
+			<button class="btn btn-primary" ng-disabled="vm.data.currentPage == 0" ng-click="vm.data.currentPage = vm.data.currentPage -1">Previous</button>
+			<button class="btn btn-primary" ng-disabled="(vm.data.currentPage+1) >= (vm.data.previousAppointment.length/vm.data.pageSize)" ng-click="vm.data.currentPage = vm.data.currentPage+1">Next</button>
+		</div>
+		<div ng-if="vm.data.currentAppointment.length == 0 || vm.data.currentAppointment.length == 1">
+				<p class="empty-data">No Upcoming Appointment</p>
+		</div>
+	</div>
+</div>

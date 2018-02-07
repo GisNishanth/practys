@@ -1,0 +1,132 @@
+<div class="main-content">
+	<div class="page-banner history-img clearfix">
+		<img src="assets/img/userprofile_banner.jpg" title="banner" />
+		<div class="banner-content">
+			<h3>My</h3>
+			<h2>Profile</h2>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+		</div>
+	</div>
+	<div class="heading-design"><img src="assets/img/logo_p.png" />			
+		<h3><span>My</span> Profile</h3>
+	</div>		
+</div>
+<div class="inner-page clearfix">	
+	<div  class="container">
+		<form class="" name="userprofile" ng-submit="vm.update(vm.data.userDetails,data)">	
+			<div class="col-md-12 profile-edit">
+			<h4 class="change-pass">Profile</h4>
+			<div class="col-md-6">
+				<div class="form-group clearfix">
+					<label for="patientName" class="col-md-4 control-label">Patient Name:</label>
+					<div class="col-md-6" ng-init="vm.data.isDisabledName = true">
+						<input type="text"  class="form-control" name="patientName" ng-model="vm.data.userDetails.firstName" ng-disabled="vm.data.isDisabledName"/>	
+					</div>
+					<a type="button" ng-click="vm.data.isDisabledName = vm.data.isDisabledName == true ? false : true;" class="btn btn-default btn-sm">
+	          				<span class="glyphicon glyphicon-edit"></span>
+	        				</a>
+				</div>
+				<div class="form-group clearfix">
+					<label  for="patientId" class="col-md-4 control-label">Patient ID:</label>
+					<div class="col-md-6" >
+						<input type="text" class="form-control" name="patientId" ng-model="vm.data.userDetails.id" 
+								ng-disabled="true"/>
+					</div>
+				</div>
+				<div class="form-group clearfix" ng-init="vm.data.isDisabledID = true">
+					<label for="patientUsername" class="col-md-4 control-label">Username:</label>
+					<div class="col-md-6" ng-init="vm.data.isDisabledUserName = true">
+						<input type="text" class="form-control" name="username" ng-model="vm.data.userDetails.username" ng-disabled="vm.data.isDisabledUserName"/>
+					</div>
+				<!-- 	<a type="button" ng-click="vm.data.isDisabledUserName = vm.data.isDisabledUserName == true ? false : true;" class="btn btn-default btn-sm">
+	          					<span class="glyphicon glyphicon-edit"></span>
+	        					</a> -->
+				</div>
+				<div class="form-group clearfix" ng-init="vm.data.isDisabledEmail = true">
+					<label for="patientEmail" class="col-md-4 control-label">Email:</label>
+						<div class="col-md-6">
+							<input type="email" class="form-control" name="email" ng-model="vm.data.userDetails.email" 
+									ng-disabled="vm.data.userDetails.email"/>
+						</div>
+						<!-- <a type="button" ng-click="vm.data.isDisabledEmail = vm.data.isDisabledEmail == true ? false : true;" class="btn btn-default btn-sm">
+	          						<span class="glyphicon glyphicon-edit"></span>
+	        			</a> -->
+				</div>
+				<div class="form-group clearfix"  ng-init="vm.data.isDisabledPhoneNumber = true">
+					<label for="patientPhnNo" class="col-md-4 control-label">Phone Number:</label>
+						<div class="col-md-6">
+							<input type="number" class="form-control" name="phnNo" ng-model="vm.data.userDetails.mobile"   ng-disabled="vm.data.isDisabledPhoneNumber"/>
+						</div>
+						<a type="button" ng-click="vm.data.isDisabledPhoneNumber = vm.data.isDisabledPhoneNumber == true ? false : true;" class="btn btn-default btn-sm">
+	          			<span class="glyphicon glyphicon-edit"></span>
+	        			</a>
+				</div>
+				<div class="form-group clearfix" ng-init="vm.data.isDisabledAddress = true">
+					<label for="patientArea" class="col-md-4 control-label">Address:</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="area" ng-model="vm.data.userDetails.address" ng-disabled="vm.data.isDisabledAddress"/>
+						</div>
+						<a type="button" ng-click="vm.data.isDisabledAddress = vm.data.isDisabledAddress == true ? false : true;" class="btn btn-default btn-sm">
+	          			<span class="glyphicon glyphicon-edit"></span>
+	        			</a>
+				</div>
+			</div>
+			<div class="col-md-6"> 
+				<div class="form-group clearfix">
+					<div class="profile-blk">
+					<span class="pr_img"><img ng-src="{{ thumbnail.dataUrl }}" on-error-src="assets/img/profile-img.png"/></span>
+					<div class="file-btn">
+						<div class="fileUpload btn btn-primary">
+							<span>Browse</span>
+							<input accept="image/*" resize-max-height="100" resize-max-width="100" resize-quality="0.7" image="" onchange="angular.element(this).scope().photoChanged(this.files)"  class="upload ng-isolate-scope" type="file">
+						</div>	
+					</div>
+					</div>
+				</div>
+			<div class="pg-btn col-md-12">
+				<button type="submit" class="btn btn-danger pull-right" ui-sref="dashboard">Cancel</button>
+				<button type="submit" class="btn btn-success pull-right">Submit</button>
+			</div>
+		</div>
+	</form>
+	<form class="" name="passwordUpdate"  ng-submit="vm.passwordUpdated(vm.data.userData)" novalidate>	
+		<div class="col-md-12 pd0">
+			<h4 class="change-pass">Change Password</h4>
+			<div class="col-md-6">
+				<div class="form-group clearfix">
+					<label for="patientOldPassword" class="col-md-4 control-label">Current Password:</label>
+					<div class="col-md-6">	
+						<input type="password" class="form-control" name="currentPass" ng-model="vm.data.userData.oldPassword"  required />
+							<div class="mandatory" ng-show="passwordUpdate.currentPass.$invalid && (passwordUpdate.currentPass.$dirty || (passwordUpdate.$submitted))"><div ng-show="passwordUpdate.currentPass.$error.required">Current Password Required</div></div>
+					</div>
+				</div>
+		<div class="form-group clearfix">
+			<label for="patientNewpassword" class="col-md-4 control-label">New Password:
+			</label>
+			<div class="col-md-6">
+				<input type="password" class="form-control" name="newPass" ng-model="vm.data.userData.newPassword" required/>
+					<div class="mandatory" ng-show="passwordUpdate.newPass.$invalid && (passwordUpdate.newPass.$dirty || passwordUpdate.$submitted) && (vm.data.userData.newPassword)">Value to short</div>
+					<div class="mandatory" ng-show="passwordUpdate.newPass.$invalid && (passwordUpdate.newPass.$dirty || (passwordUpdate.$submitted))"><div ng-show="passwordUpdate.newPass.$error.required">New Password Required</div></div>
+			</div>
+		</div>
+		<div class="form-group clearfix">
+			<label for="patientConfirmnew" class="col-md-4 control-label">Confirm Password:
+			</label>
+			<div class="col-md-6">
+				<input type="password" class="form-control" name="confirmNew" ng-model="vm.data.userData.confirmPassword" required/>
+				<div class="mandatory" ng-show="(vm.data.userData.newPassword != vm.data.userData.confirmPassword) && vm.data.userData.confirmPassword">Must match the previous entry</div>
+				<div class="mandatory" ng-show="passwordUpdate.confirmNew.$invalid && (passwordUpdate.confirmNew.$dirty || (passwordUpdate.$submitted))"><div ng-show="passwordUpdate.confirmNew.$error.required">Confirm Password Required</div></div>
+			</div>
+		</div>
+		</div>
+		<div class="col-md-12">
+		<div class="pg-btn pg-pd0 col-md-12">
+				<button type="submit" class="btn btn-danger pull-right" ui-sref="dashboard">Cancel</button>
+				<button type="submit" class="btn btn-success pull-right" >Submit</button>
+		</div>
+		</div>
+	</div>
+	
+	</form>
+	</div>
+</div>

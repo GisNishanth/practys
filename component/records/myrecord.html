@@ -1,0 +1,46 @@
+<div class="main-content">
+    <div class="page-banner history-img clearfix">
+        <img src="assets/img/banner_3.png" />
+        <div class="banner-content">
+            <h3>My</h3>
+            <h2>Records</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+        </div>
+    </div>
+    <div class="heading-design"><img src="assets/img/logo_p.png" />         
+        <h3><span>My</span> Records</h3>
+    </div>      
+</div>
+<div>
+<div class="container">
+    <div class="panel-body">
+        <div class="patient-tb">
+             <table datatable="ng" class="table table-striped table-bordered">
+                <thead class="panel-heading">
+                    <tr>
+                      <!-- <th class="chck-bx"></th> -->
+                        <th>Treatment list</th>
+                        <th>Appointment Date</th>
+                        <th>Received on</th>
+                        <th>Action</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  ng-repeat="details in vm.data.getPatientDetails | filter:details.status == 'checkOut'| orderBy: '-startDate' ">
+                       <!--  <td class="task-mg-com"><div class="checkbox-style">                                
+                        <input  type="checkbox" name="checkbox" ng-model="" value="" class="reqcheckbox" id="select2">
+                        <label for="select1"><span></span></label>
+                        </div></td> -->
+                        <td class="task-mg-com"><p>{{details.speciality.name}}</p></td>
+                        <td class="task-mg-com"><p>{{vm.dateFormat(details.appointmentStart)}}</p></td>
+                        <td class="task-mg-com"><p>{{vm.dateFormat(details.appointmentEnd)}} </p></td>
+                        <td class="task-mg-com action-i"><i class="fa fa-eye" ng-click="vm.recordsDetails(details)"></i> <!-- <i class="fa fa-trash" aria-hidden="true"></i> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+        </div>
+    </div>
+    </div>
+</div>

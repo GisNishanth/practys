@@ -1,0 +1,30 @@
+<!-- feedback view -->
+
+<div class="gt-touch clearfix">
+	<h3>Get in touch</h3>
+	<form name="feedback" ng-submit="vm.feedbackDetailsSubmit(vm.sendData)" novalidate>
+		<div class="co1-md-12 clearfix">
+		<label class="col-md-4 col-sm-4"><input type="text" class="form-control" name="name" placeholder="Name" ng-model="vm.sendData.name" required>
+		<div class="mandatory" ng-show="feedback.name.$invalid && (feedback.name.$dirty || vm.data.submit)"><div ng-show="feedback.name.$error.required">Name Required</div></div>
+		</label>
+		<label class="col-md-4 col-sm-4"><input type="email" class="form-control" name="email" placeholder="Your Email Address" ng-model="vm.sendData.email" required>
+		<div class="mandatory" ng-show="feedback.email.$invalid && vm.data.submit">Email Invalid</div>
+		<div class="mandatory" ng-show="feedback.email.$invalid && (feedback.email.$dirty || vm.data.submit)"><div ng-show="feedback.email.$error.required">email Required</div></div>
+		</label>
+			<div class="col-md-4 col-sm-4">
+			<oi-select
+						oi-options="item.username for item in clinicDetails track by item.id"
+					    ng-model="vm.sendData.clinic" 
+						placeholder="Select  Clinic"
+						name="clinic"
+						oi-select-options="{cleanModel: true }" required></oi-select>
+			<div class="mandatory" ng-show="feedback.clinic.$invalid && (feedback.clinic.$dirty || vm.data.submit)"><div ng-show="feedback.clinic.$error.required">clinic required</div></div>				
+			</div>
+		</div>
+			<div class="co1-md-12 msg-blk clearfix">
+				<div class="col-md-8 col-sm-8"><textarea class="form-control" name="message" rows="5"  placeholder="Message" ng-model="vm.sendData.message" required></textarea></div>
+				<span class="mandatory" ng-show="feedback.message.$invalid && (feedback.message.$dirty || vm.data.submit)"><span ng-show="feedback.message.$error.required">Message required</span></span>
+				<div class="col-md-4 col-sm-4"><button type="submit" class="btn btn-primary">Send</button></div>
+			</div>
+	</form>		
+</div>
